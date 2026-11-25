@@ -1,0 +1,153 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.in_BitstreamAccount="Bitstream_Mazen" this:Main.in_InputFolder="\\172.30.53.227\UiPath Studio WorkPlace\TE Bitstream Speed Optimization - parallel sequence\input" this:Main.in_StaleMinutes="60" this:Main.in_LateStartHour="9" this:Main.in_AlertTo="mazen.ehababoali@vodafone.com.eg" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/ftp" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_BitstreamAccount" Type="InArgument(x:String)" />
+    <x:Property Name="in_InputFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_StaleMinutes" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_LateStartHour" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_AlertTo" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="116">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.FTP</x:String>
+      <x:String>UiPath.FTP.Activities</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>Vodafone_Egypt_Database_Logging</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>Microsoft.Exchange.WebServices.Data</x:String>
+      <x:String>UiPath.Mail.Exchange</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="90">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.FTP</AssemblyReference>
+      <AssemblyReference>UiPath.FTP.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices.Auth</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Speed Optimization Monitor">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:DatabaseConnection" Name="db_conn" />
+      <Variable x:TypeArguments="s:TimeZoneInfo" Default="[TimeZoneInfo.FindSystemTimeZoneById(If(TimeZoneInfo.GetSystemTimeZones().Any(Function(z) z.Id = &quot;Egypt Standard Time&quot;), &quot;Egypt Standard Time&quot;, &quot;Africa/Cairo&quot;))]" Name="cairoTz" />
+      <Variable x:TypeArguments="s:DateTime" Name="nowCairo" />
+      <Variable x:TypeArguments="x:String" Name="todayStr" />
+      <Variable x:TypeArguments="x:String" Name="runDate" />
+      <Variable x:TypeArguments="s:String[]" Name="batchFiles" />
+      <Variable x:TypeArguments="sd:DataTable" Name="staleDT" />
+      <Variable x:TypeArguments="sd:DataTable" Name="todayDT" />
+    </Sequence.Variables>
+    <Assign DisplayName="Now (Africa/Cairo)"><Assign.To><OutArgument x:TypeArguments="s:DateTime">[nowCairo]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="s:DateTime">[TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, cairoTz)]</InArgument></Assign.Value></Assign>
+    <ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Speed Optimization Monitor started at &quot; + nowCairo.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;) + &quot; (Cairo)&quot;]" />
+    <TryCatch DisplayName="Monitor"><TryCatch.Try><Sequence><ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[staleDT]" DisplayName="Find started runs with no heartbeat for more than in_StaleMinutes" ExistingDbConnection="[db_conn]" Sql="[&quot;SELECT [date], [last_execution_date], [last_index_executed_1], [last_index_executed_2], [last_index_executed_3], [last_index_executed_4], [success_count] FROM [RPA_Statistics].[dbo].[SpeedOptimization_Tracking] WHERE [job_status] = 'started' AND ([last_execution_date] IS NULL OR [last_execution_date] &lt; '&quot; + nowCairo.AddMinutes(-in_StaleMinutes).ToString(&quot;yyyy-MM-ddTHH:mm:ss&quot;, System.Globalization.CultureInfo.InvariantCulture) + &quot;') ORDER BY [date]&quot;]"><ui:ExecuteQuery.Parameters><scg:Dictionary x:TypeArguments="x:String, Argument" /></ui:ExecuteQuery.Parameters></ui:ExecuteQuery><ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Stalled runs found: &quot; + staleDT.Rows.Count.ToString]" /><ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[staleDT]" DisplayName="For each stalled date"><ui:ForEachRow.Body><ActivityAction x:TypeArguments="sd:DataRow"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="sd:DataRow" Name="staleRow" /></ActivityAction.Argument><TryCatch DisplayName="Recover one stalled date"><TryCatch.Try><Sequence><Assign DisplayName="Run date of the stalled row"><Assign.To><OutArgument x:TypeArguments="x:String">[runDate]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[Convert.ToDateTime(staleRow(&quot;date&quot;)).ToString(&quot;yyyy-MM-dd&quot;, System.Globalization.CultureInfo.InvariantCulture)]</InArgument></Assign.Value></Assign><Assign DisplayName="Input files of that date (same names Split_files_two_batches.xaml writes)"><Assign.To><OutArgument x:TypeArguments="s:String[]">[batchFiles]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="s:String[]">[New String() {System.IO.Path.Combine(in_InputFolder, &quot;first_batch_&quot; + runDate + &quot;.csv&quot;), System.IO.Path.Combine(in_InputFolder, &quot;second_batch_&quot; + runDate + &quot;.csv&quot;), System.IO.Path.Combine(in_InputFolder, &quot;Third_batch_&quot; + runDate + &quot;.csv&quot;), System.IO.Path.Combine(in_InputFolder, &quot;Fourth_batch_&quot; + runDate + &quot;.csv&quot;)}]</InArgument></Assign.Value></Assign><If Condition="[batchFiles.All(Function(f) System.IO.File.Exists(f))]" DisplayName="Input files of that date exist?"><If.Then><Sequence><ui:LogMessage DisplayName="Log Message" Level="Warn" Message="[&quot;Stalled run for &quot; + runDate + &quot;: job_status=started, last heartbeat &quot; + If(IsDBNull(staleRow(&quot;last_execution_date&quot;)), &quot;never&quot;, Convert.ToDateTime(staleRow(&quot;last_execution_date&quot;)).ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;)) + &quot; (Cairo). Re-triggering, resume indexes &quot; + staleRow(&quot;last_index_executed_1&quot;).ToString + &quot;/&quot; + staleRow(&quot;last_index_executed_2&quot;).ToString + &quot;/&quot; + staleRow(&quot;last_index_executed_3&quot;).ToString + &quot;/&quot; + staleRow(&quot;last_index_executed_4&quot;).ToString]" /><ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="retriggerSpeed7.xaml - Invoke Workflow File" UnSafe="False" WorkflowFileName="retriggerSpeed7.xaml"><ui:InvokeWorkflowFile.Arguments><InArgument x:TypeArguments="x:String" x:Key="bitstreamAcc">[in_BitstreamAccount]</InArgument><InArgument x:TypeArguments="x:String" x:Key="fileName">[batchFiles(0)]</InArgument><InArgument x:TypeArguments="x:String" x:Key="Batch1_success">No</InArgument><InArgument x:TypeArguments="x:String" x:Key="Batch2_success">No</InArgument><InArgument x:TypeArguments="x:String" x:Key="filename2">[batchFiles(1)]</InArgument><InArgument x:TypeArguments="x:String" x:Key="filename3">[batchFiles(2)]</InArgument><InArgument x:TypeArguments="x:String" x:Key="Batch3_success">No</InArgument><InArgument x:TypeArguments="x:String" x:Key="Batch4_success">No</InArgument><InArgument x:TypeArguments="x:String" x:Key="filename4">[batchFiles(3)]</InArgument><InArgument x:TypeArguments="x:String" x:Key="runId">[String.Empty]</InArgument><InArgument x:TypeArguments="x:String" x:Key="runDate">[runDate]</InArgument><InArgument x:TypeArguments="x:String" x:Key="runStartDateTime">[String.Empty]</InArgument><InArgument x:TypeArguments="x:Int32" x:Key="originalTotalCount">[0]</InArgument><InArgument x:TypeArguments="x:Int32" x:Key="previousSuccessCount">[Convert.ToInt32(staleRow(&quot;success_count&quot;))]</InArgument><InArgument x:TypeArguments="x:Int32" x:Key="retryAttempt">[0]</InArgument><InArgument x:TypeArguments="x:Boolean" x:Key="resumeFromCheckpoint">[True]</InArgument></ui:InvokeWorkflowFile.Arguments></ui:InvokeWorkflowFile><ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Touch last_execution_date so the next hourly check does not re-trigger again" ExistingDbConnection="[db_conn]" Sql="[&quot;UPDATE [RPA_Statistics].[dbo].[SpeedOptimization_Tracking] SET [last_execution_date] = '&quot; + nowCairo.ToString(&quot;yyyy-MM-ddTHH:mm:ss&quot;, System.Globalization.CultureInfo.InvariantCulture) + &quot;' WHERE [date] = '&quot; + runDate + &quot;' AND [job_status] = 'started'&quot;]"><ui:ExecuteNonQuery.Parameters><scg:Dictionary x:TypeArguments="x:String, Argument" /></ui:ExecuteNonQuery.Parameters></ui:ExecuteNonQuery><ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Re-trigger requested for &quot; + runDate]" /><TryCatch DisplayName="Mail (best effort)"><TryCatch.Try><Sequence><ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[&quot;The Speed Optimization run for &quot; + runDate + &quot; stopped sending heartbeats (last heartbeat: &quot; + If(IsDBNull(staleRow(&quot;last_execution_date&quot;)), &quot;never&quot;, Convert.ToDateTime(staleRow(&quot;last_execution_date&quot;)).ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;)) + &quot;, Cairo time).&lt;br&gt;The Monitor re-triggered it to resume from last_index_executed 1/2/3/4 = &quot; + staleRow(&quot;last_index_executed_1&quot;).ToString + &quot;/&quot; + staleRow(&quot;last_index_executed_2&quot;).ToString + &quot;/&quot; + staleRow(&quot;last_index_executed_3&quot;).ToString + &quot;/&quot; + staleRow(&quot;last_index_executed_4&quot;).ToString + &quot;.&lt;br&gt;Success so far: &quot; + staleRow(&quot;success_count&quot;).ToString]" DisplayName="Send SMTP Mail Message" EnableSSL="True" From="RPA.Robot@vodafone.com" IgnoreCRL="False" IsBodyHtml="True" Port="25" SecureConnection="Auto" Server="10.230.30.32" Subject="[&quot;TE.Bitstream Speed Optimization - stalled run re-triggered (&quot; + runDate + &quot;)&quot;]" To="[in_AlertTo]"><ui:SendMail.Files><scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" /></ui:SendMail.Files></ui:SendMail></Sequence></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="mailEx1" /></ActivityAction.Argument><Sequence><ui:LogMessage DisplayName="Log Message" Level="Warn" Message="[&quot;Could not send mail: &quot; + mailEx1.Message]" /></Sequence></ActivityAction></Catch></TryCatch.Catches></TryCatch></Sequence></If.Then><If.Else><Sequence><ui:LogMessage DisplayName="Log Message" Level="Error" Message="[&quot;Stalled run for &quot; + runDate + &quot; but its batch files are missing: &quot; + String.Join(&quot;; &quot;, batchFiles.Where(Function(f) Not System.IO.File.Exists(f)))]" /><TryCatch DisplayName="Mail (best effort)"><TryCatch.Try><Sequence><ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[&quot;A stalled run was found for &quot; + runDate + &quot; but these input files are missing, so it was not re-triggered:&lt;br&gt;&quot; + String.Join(&quot;&lt;br&gt;&quot;, batchFiles.Where(Function(f) Not System.IO.File.Exists(f)))]" DisplayName="Send SMTP Mail Message" EnableSSL="True" From="RPA.Robot@vodafone.com" IgnoreCRL="False" IsBodyHtml="True" Port="25" SecureConnection="Auto" Server="10.230.30.32" Subject="[&quot;TE.Bitstream Speed Optimization - cannot resume &quot; + runDate]" To="[in_AlertTo]"><ui:SendMail.Files><scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" /></ui:SendMail.Files></ui:SendMail></Sequence></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="mailEx2" /></ActivityAction.Argument><Sequence><ui:LogMessage DisplayName="Log Message" Level="Warn" Message="[&quot;Could not send mail: &quot; + mailEx2.Message]" /></Sequence></ActivityAction></Catch></TryCatch.Catches></TryCatch></Sequence></If.Else></If></Sequence></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="rowEx" /></ActivityAction.Argument><Sequence><ui:LogMessage DisplayName="Log Message" Level="Error" Message="[&quot;Could not re-trigger stalled run &quot; + runDate + &quot;: &quot; + rowEx.Message]" /><TryCatch DisplayName="Mail (best effort)"><TryCatch.Try><Sequence><ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[&quot;Re-triggering the stalled run for &quot; + runDate + &quot; failed: &quot; + rowEx.Message]" DisplayName="Send SMTP Mail Message" EnableSSL="True" From="RPA.Robot@vodafone.com" IgnoreCRL="False" IsBodyHtml="True" Port="25" SecureConnection="Auto" Server="10.230.30.32" Subject="[&quot;TE.Bitstream Speed Optimization Monitor - re-trigger failed (&quot; + runDate + &quot;)&quot;]" To="[in_AlertTo]"><ui:SendMail.Files><scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" /></ui:SendMail.Files></ui:SendMail></Sequence></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="mailEx3" /></ActivityAction.Argument><Sequence><ui:LogMessage DisplayName="Log Message" Level="Warn" Message="[&quot;Could not send mail: &quot; + mailEx3.Message]" /></Sequence></ActivityAction></Catch></TryCatch.Catches></TryCatch></Sequence></ActivityAction></Catch></TryCatch.Catches></TryCatch></ActivityAction></ui:ForEachRow.Body></ui:ForEachRow><If Condition="[nowCairo.TimeOfDay &gt; TimeSpan.FromHours(in_LateStartHour)]" DisplayName="Past 9:00 AM Cairo?"><If.Then><Sequence><Assign DisplayName="Today (Cairo)"><Assign.To><OutArgument x:TypeArguments="x:String">[todayStr]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[nowCairo.ToString(&quot;yyyy-MM-dd&quot;, System.Globalization.CultureInfo.InvariantCulture)]</InArgument></Assign.Value></Assign><ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[todayDT]" DisplayName="Read today's row" ExistingDbConnection="[db_conn]" Sql="[&quot;SELECT [job_status] FROM [RPA_Statistics].[dbo].[SpeedOptimization_Tracking] WHERE [date] = '&quot; + todayStr + &quot;'&quot;]"><ui:ExecuteQuery.Parameters><scg:Dictionary x:TypeArguments="x:String, Argument" /></ui:ExecuteQuery.Parameters></ui:ExecuteQuery><If Condition="[todayDT.Rows.Count = 0 OrElse Not {&quot;started&quot;, &quot;finished&quot;}.Contains(todayDT.Rows(0)(&quot;job_status&quot;).ToString.Trim.ToLower)]" DisplayName="Today not started?"><If.Then><Sequence><ui:LogMessage DisplayName="Log Message" Level="Warn" Message="[&quot;Late start: Speed Optimization for &quot; + todayStr + &quot; has not started: &quot; + If(todayDT.Rows.Count = 0, &quot;no row in the tracking table&quot;, &quot;job_status = '&quot; + todayDT.Rows(0)(&quot;job_status&quot;).ToString + &quot;'&quot;)]" /><TryCatch DisplayName="Mail (best effort)"><TryCatch.Try><Sequence><ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[&quot;It is &quot; + nowCairo.ToString(&quot;HH:mm&quot;) + &quot; Cairo time and the Speed Optimization run for &quot; + todayStr + &quot; has not started.&lt;br&gt;Tracking status: &quot; + If(todayDT.Rows.Count = 0, &quot;no row in the tracking table&quot;, &quot;job_status = '&quot; + todayDT.Rows(0)(&quot;job_status&quot;).ToString + &quot;'&quot;) + &quot;.&quot;]" DisplayName="Send SMTP Mail Message" EnableSSL="True" From="RPA.Robot@vodafone.com" IgnoreCRL="False" IsBodyHtml="True" Port="25" SecureConnection="Auto" Server="10.230.30.32" Subject="[&quot;TE.Bitstream Speed Optimization has not started (&quot; + todayStr + &quot;)&quot;]" To="[in_AlertTo]"><ui:SendMail.Files><scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" /></ui:SendMail.Files></ui:SendMail></Sequence></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="mailEx4" /></ActivityAction.Argument><Sequence><ui:LogMessage DisplayName="Log Message" Level="Warn" Message="[&quot;Could not send mail: &quot; + mailEx4.Message]" /></Sequence></ActivityAction></Catch></TryCatch.Catches></TryCatch></Sequence></If.Then><If.Else><ui:LogMessage DisplayName="Log Message" Level="Info" Message="[&quot;Today's run (&quot; + todayStr + &quot;) has started.&quot;]" /></If.Else></If></Sequence></If.Then></If></Sequence></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="monitorEx" /></ActivityAction.Argument><Sequence><ui:LogMessage DisplayName="Log Message" Level="Error" Message="[&quot;Speed Optimization Monitor failed: &quot; + monitorEx.Message]" /><TryCatch DisplayName="Mail (best effort)"><TryCatch.Try><Sequence><ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[&quot;The hourly Speed Optimization Monitor failed at &quot; + nowCairo.ToString(&quot;yyyy-MM-dd HH:mm&quot;) + &quot; Cairo time: &quot; + monitorEx.Message]" DisplayName="Send SMTP Mail Message" EnableSSL="True" From="RPA.Robot@vodafone.com" IgnoreCRL="False" IsBodyHtml="True" Port="25" SecureConnection="Auto" Server="10.230.30.32" Subject="[&quot;TE.Bitstream Speed Optimization Monitor failed&quot;]" To="[in_AlertTo]"><ui:SendMail.Files><scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" /></ui:SendMail.Files></ui:SendMail></Sequence></TryCatch.Try><TryCatch.Catches><Catch x:TypeArguments="s:Exception"><ActivityAction x:TypeArguments="s:Exception"><ActivityAction.Argument><DelegateInArgument x:TypeArguments="s:Exception" Name="mailEx5" /></ActivityAction.Argument><Sequence><ui:LogMessage DisplayName="Log Message" Level="Warn" Message="[&quot;Could not send mail: &quot; + mailEx5.Message]" /></Sequence></ActivityAction></Catch></TryCatch.Catches></TryCatch><Rethrow /></Sequence></ActivityAction></Catch></TryCatch.Catches></TryCatch>
+  </Sequence>
+</Activity>
